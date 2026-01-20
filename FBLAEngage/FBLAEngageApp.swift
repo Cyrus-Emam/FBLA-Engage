@@ -9,9 +9,18 @@ import SwiftUI
 
 @main
 struct FBLAEngageApp: App {
+    @State private var store = AppStore()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootTabsView()
+                .environment(store)
+                .environment(
+                    \.dynamicTypeSize,
+                    store.profile.largeText ? .xxxLarge : .large
+                )
         }
     }
 }
+
+
